@@ -47,7 +47,7 @@
         private function start($action,$data=false){
 
             if (is_callable($action)) {
-                $action();
+                $action($data);
                 $this->ok = 0;
             }
             else {
