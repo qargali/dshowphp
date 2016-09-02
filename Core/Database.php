@@ -1,9 +1,9 @@
 <?php
 
-define(host,'mysql host');
+define(host,'localhost');
 
-define(dbname,'DataBase Name');
+define(dbname,'frame');
 
-define(user,'Mysql User');
+define(user,'root');
 
-define(password,'Mysql Password');
+define(password,"");
