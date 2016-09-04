@@ -8,20 +8,20 @@
 
 
         public function post($curl,$action){
-            if($this->check($curl) && $_POST && $this->ok){
+            if($this->check($curl) && $_POST){
                 $this->start($action,$_POST);
             }
         }
 
         public function get($curl,$action){
-              if($this->check($curl) && $this->ok){
+              if($this->check($curl)){
                   $this->start($action);
               }
         }
 
         public function getjson($curl,$action){
             $postdata = trim(file_get_contents("php://input"));
-            if($this->ok && $postdata && $this->check($curl)){
+            if($postdata && $this->check($curl)){
                 $postdata = json_decode($postdata,true);
                 $this->start($action,$postdata);
             }
@@ -73,7 +73,10 @@
         private function check($curl){
             global $url;
             $curl = preg_replace("/\//",'\/',$curl);
-            return preg_match("/^$curl$/",$url);
+            if (preg_match("/^$curl$/",$url) && $this->ok)
+                return true;
+            else
+                return false;
         }
 
     }
