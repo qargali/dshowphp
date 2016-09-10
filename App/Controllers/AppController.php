@@ -8,11 +8,12 @@ use Core;
 /**
  * Sample Controller
  */
-class SampleController extends Core\Controller
+class AppController extends Core\Controller
 {
     public function firstPage(){
-        Core\View::render("firstpage.html");
+        Core\View::render("index.html");
     }
+    
 
     public function getUsers(){
         $users = new User();

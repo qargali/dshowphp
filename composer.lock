@@ -4,9 +4,42 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "acee32a24a887f196fa0f1de3474924c",
-    "content-hash": "a38c214d170b58aba5d23ae11e3287ca",
+    "hash": "bad0887a36fa49c36bf5c0a460783686",
+    "content-hash": "cd8961333242fc086a6c2960dd6144bd",
     "packages": [
+        {
+            "name": "dailymotion/sdk",
+            "version": "1.6.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dailymotion/dailymotion-sdk-php.git",
+                "reference": "0f558978785f9a6ab9e59c393041d4896550973b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dailymotion/dailymotion-sdk-php/zipball/0f558978785f9a6ab9e59c393041d4896550973b",
+                "reference": "0f558978785f9a6ab9e59c393041d4896550973b",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "Dailymotion.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Dailymotion PHP SDK",
+            "homepage": "http://dailymotion.com",
+            "keywords": [
+                "api",
+                "dailymotion",
+                "sdk"
+            ],
+            "time": "2015-11-20 11:18:32"
+        },
         {
             "name": "twig/twig",
             "version": "v1.24.1",

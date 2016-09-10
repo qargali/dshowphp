@@ -6,6 +6,10 @@
         echo('It is Working');
     });
 
-    $Route->get('users',"getUsers@SampleController");
+    $Route->get('users',"getUsers@AppController");
 
-    $Route->defAction("firstPage@SampleController");
+    $Route->get('haqqimizda',function(){
+        \Core\View::render('info.html');
+    });
+
+    $Route->defAction("firstPage@AppController");

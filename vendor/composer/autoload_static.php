@@ -16,10 +16,20 @@ class ComposerStaticInit9d5d8e62c25654c679dd1ace5a4a1cf3
         ),
     );
 
+    public static $classMap = array (
+        'Dailymotion' => __DIR__ . '/..' . '/dailymotion/sdk/Dailymotion.php',
+        'DailymotionApiException' => __DIR__ . '/..' . '/dailymotion/sdk/Dailymotion.php',
+        'DailymotionAuthException' => __DIR__ . '/..' . '/dailymotion/sdk/Dailymotion.php',
+        'DailymotionAuthRefusedException' => __DIR__ . '/..' . '/dailymotion/sdk/Dailymotion.php',
+        'DailymotionAuthRequiredException' => __DIR__ . '/..' . '/dailymotion/sdk/Dailymotion.php',
+        'DailymotionTransportException' => __DIR__ . '/..' . '/dailymotion/sdk/Dailymotion.php',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixesPsr0 = ComposerStaticInit9d5d8e62c25654c679dd1ace5a4a1cf3::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit9d5d8e62c25654c679dd1ace5a4a1cf3::$classMap;
 
         }, null, ClassLoader::class);
     }

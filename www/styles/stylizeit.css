@@ -1,0 +1,67 @@
+@keyframes colorchange {
+    0% {color: #7e7c7c;}
+    50% {color: #713399;}
+    100% {color: #eb268f;}
+}
+@keyframes recolorchange {
+    0% {color: #eb268f;}
+    50% {color: #713399;}
+    100% {color: #7e7c7c;}
+}
+.dodo a{
+    color: #000;
+}
+.dodo a:hover{
+    text-decoration: none;
+    color: #713364;
+}
+.dodo a:hover i{
+    color: #713399;
+}
+.dodo i{
+    color: #713364;
+}
+.naviq{
+    text-align: center;
+}
+.naviq a{
+    color: #7e7c7c;
+    padding: 0 25px;
+    animation-name: recolorchange;
+    animation-duration: 3s;
+}
+.naviq a:hover{
+    color: #eb268f;
+    text-decoration: none;
+    animation-name: colorchange;
+    animation-duration: 1s;
+}
+            
+.registerbutton{
+    color: #fff; 
+    border: none; 
+    border-radius: 10px; 
+    background-color: #713364; 
+    padding: 3px 20px; 
+    margin: 0 auto;
+    font-weight: lighter;
+    display: block;
+}
+.reklam{
+    writing-mode: tb-rl;
+}
+.sss{
+    text-align: center;
+}
+            
+            
+@media only screen and (max-width: 991px) {
+    .naviq a{
+        padding: 0 5px;
+        white-space: nowrap;
+    }
+                
+    .martop{
+        margin-top: 20px;
+    }
+}

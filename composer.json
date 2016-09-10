@@ -1,5 +1,6 @@
 {
     "require": {
-        "twig/twig": "^1.24"
+        "twig/twig": "^1.24",
+        "dailymotion/sdk": "^1.6"
     }
 }
