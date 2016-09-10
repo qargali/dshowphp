@@ -19,13 +19,31 @@ class AppController extends Core\Controller
         $this->request['tags']="koffie";
     }
 
+    function sidebar($visited=false){
+        unset($this->request['ids']);
+        unset($this->request['search']);
+        $this->request['tags']="koffie";
+        $this->request['limit']=5;
+        if ($visited){
+            $this->request['sort']='visited';
+
+        }
+        $response = $this->api->get(
+            '/videos',
+            $this->request
+        );
+
+        return $response['list'];
+    }
+
     public function axtar($data){
         $this->request['search']=$data['key'];
         $results = $this->api->get(
             '/videos',
             $this->request
         );
-        Core\View::render("main.html",array('videos'=>$results['list'],'pages'=> ceil($results['total']/10),'key'=>$data['key']));
+        $sidebar = $this->sidebar(true);
+        Core\View::render("main.html",array('videos'=>$results['list'],'pages'=> ceil($results['total']/10),'key'=>$data['key'],'sidebar'=>$sidebar));
     }
 
     public function axtarS(){
@@ -39,10 +57,12 @@ class AppController extends Core\Controller
             '/videos',
             $this->request
         );
+        $sidebar = $this->sidebar(true);
         Core\View::render("main.html",array(
             'videos'=>$results['list'],
             'pages'=> ceil($results['total']/10),
-            'key'=>$key
+            'key'=>$key,
+            'sidebar'=>$sidebar
         ));
     }
 
@@ -54,7 +74,8 @@ class AppController extends Core\Controller
         /*
             $this->show($results);
         */
-        Core\View::render("main.html",array('videos'=>$results['list'],'pages'=> ceil($results['total']/10)));
+        $sidebar = $this->sidebar(true);
+        Core\View::render("main.html",array('videos'=>$results['list'],'pages'=> ceil($results['total']/10),'sidebar'=>$sidebar));
     }
 
     public function sehifele(){
@@ -66,7 +87,8 @@ class AppController extends Core\Controller
             '/videos',
             $this->request
         );
-        Core\View::render("main.html",array('videos'=>$results['list'],'pages'=> ceil($results['total']/10)));
+        $sidebar = $this->sidebar(true);
+        Core\View::render("main.html",array('videos'=>$results['list'],'pages'=> ceil($results['total']/10),'sidebar'=>$sidebar));
     }
 
     function show($res){
@@ -85,15 +107,9 @@ class AppController extends Core\Controller
             '/videos',
             $this->request
         );
+        $sidebar = $this->sidebar();
         //$this->show($results['list'][0]);
-        Core\View::render('watch.html',array('video'=>$results['list'][0]));
+        Core\View::render('watch.html',array('video'=>$results['list'][0],'sidebar'=>$sidebar));
 
-    }
-    
-
-    public function getUsers(){
-        $users = new User();
-        $users = $users->getAll();
-        Core\View::render('users.html',array('users'=>$users));
     }
 }

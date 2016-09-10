@@ -1,0 +1,18 @@
+<div class="col-md-4 col-md-pull-8" style="padding:0">
+    <div class="ui blue inverted segment">
+        Ən çox baxılanlar
+    </div>
+    {% for el in sidebar %}
+    <div class="panel panel-default">
+        <div class="panel-heading"><a href="/bax/{{el.id}}">{{el.title}}</a></div>
+        <div class="panel-body">
+            <a href="/bax/{{el.id}}">
+                <img src="{{el.thumbnail_120_url}}" alt="{{el.title}}"  />
+            </a>
+        </div>
+        <div class="panel-footer">
+            Baxılıb: {{el.views_total}} dəfə
+        </div>
+    </div>
+    {% endfor %}
+</div>
