@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Models\User;
 use Core;
 
 /**
@@ -10,8 +9,22 @@ use Core;
  */
 class AppController extends Core\Controller
 {
+    private $api;
+    private $request;
+
+    function __construct()
+    {
+        $this->api = new \Dailymotion();
+        $this->request['fields'] = array('id', 'title', 'views_total','embed_url','description','thumbnail_120_url','tags');
+        $this->request['tags']="koffie";
+    }
+
     public function firstPage(){
-        Core\View::render("index.html");
+        $results = $this->api->get(
+            '/videos',
+            $this->request
+        );
+        Core\View::render("main.html",array('videos'=>$results));
     }
     
 
