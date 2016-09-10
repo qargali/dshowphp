@@ -14,4 +14,6 @@
 
     $Route->get('bax/\w+','bax@AppController');
 
+    $Route->get('sehife/\d+','sehifele@AppController');
+
     $Route->defAction("firstPage@AppController");

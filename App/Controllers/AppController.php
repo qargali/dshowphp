@@ -27,7 +27,20 @@ class AppController extends Core\Controller
         /*
             $this->show($results);
         */
-        Core\View::render("main.html",array('videos'=>$results['list']));
+        Core\View::render("main.html",array('videos'=>$results['list'],'pages'=> ceil($results['total']/10)));
+    }
+
+    public function sehifele(){
+        global $url;
+        unset($this->request['tags']);
+        $ur = explode('/',$url);
+        $page = $ur[1];
+        $this->request['page']=$page;
+        $results = $this->api->get(
+            '/videos',
+            $this->request
+        );
+        Core\View::render("main.html",array('videos'=>$results['list'],'pages'=> ceil($results['total']/10)));
     }
 
     function show($res){
