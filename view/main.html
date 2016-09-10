@@ -28,28 +28,29 @@
     {% else %}
     <h1>Axtarilan video yoxdur</h1>
     {% endfor %}
-    {% if key %}
-    <nav>
-        <ul class="pagination">
+    {% if pages!=0 %}
+        {% if key %}
+            <nav>
+                <ul class="pagination">
 
-            {% for page in 1..pages %}
-                <li><a href="/{{key}}/{{page}}">{{page}}</a></li>
-            {% endfor %}
-        </ul>
-    </nav>
+                    {% for page in 1..pages %}
+                        <li><a href="/{{key}}/{{page}}">{{page}}</a></li>
+                    {% endfor %}
+                </ul>
+            </nav>
 
 
-    {% else %}
-    <nav>
-        <ul class="pagination">
-            {% for page in 1..pages %}
-                <li><a href="/sehife/{{page}}">{{page}}</a></li>
-            {% endfor %}
+            {% else %}
+            <nav>
+                <ul class="pagination">
+                    {% for page in 1..pages %}
+                        <li><a href="/sehife/{{page}}">{{page}}</a></li>
+                    {% endfor %}
 
-        </ul>
-    </nav>
-    {%endif%}
-
+                </ul>
+            </nav>
+        {%endif%}
+    {% endif %}
 </div>
 
 {% endblock %}
