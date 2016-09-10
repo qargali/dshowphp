@@ -19,6 +19,33 @@ class AppController extends Core\Controller
         $this->request['tags']="koffie";
     }
 
+    public function axtar($data){
+        $this->request['search']=$data['key'];
+        $results = $this->api->get(
+            '/videos',
+            $this->request
+        );
+        Core\View::render("main.html",array('videos'=>$results['list'],'pages'=> ceil($results['total']/10),'key'=>$data['key']));
+    }
+
+    public function axtarS(){
+        global $url;
+        $ur = explode('/',$url);
+        $key = $ur[0];
+        $page = $ur[1];
+        $this->request['search']=$key;
+        $this->request['page']=$page;
+        $results = $this->api->get(
+            '/videos',
+            $this->request
+        );
+        Core\View::render("main.html",array(
+            'videos'=>$results['list'],
+            'pages'=> ceil($results['total']/10),
+            'key'=>$key
+        ));
+    }
+
     public function firstPage(){
         $results = $this->api->get(
             '/videos',
@@ -32,7 +59,6 @@ class AppController extends Core\Controller
 
     public function sehifele(){
         global $url;
-        unset($this->request['tags']);
         $ur = explode('/',$url);
         $page = $ur[1];
         $this->request['page']=$page;

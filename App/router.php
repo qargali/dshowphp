@@ -14,6 +14,10 @@
 
     $Route->get('bax/\w+','bax@AppController');
 
+    $Route->post('axtar','axtar@AppController');
+
     $Route->get('sehife/\d+','sehifele@AppController');
+
+    $Route->get("\w+/\d+",'axtarS@AppController');
 
     $Route->defAction("firstPage@AppController");

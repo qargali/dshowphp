@@ -31,7 +31,10 @@
     {% if key %}
     <nav>
         <ul class="pagination">
-            <li *ngFor="let row of gs.total"><a href="" [routerLink]="['SearchPlus',{key:keyy,sehi:row}]">{{row}}</a></li>
+
+            {% for page in 1..pages %}
+                <li><a href="/{{key}}/{{page}}">{{page}}</a></li>
+            {% endfor %}
         </ul>
     </nav>
 
