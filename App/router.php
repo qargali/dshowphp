@@ -12,4 +12,6 @@
         \Core\View::render('info.html');
     });
 
+    $Route->get('bax/\w+','bax@AppController');
+
     $Route->defAction("firstPage@AppController");

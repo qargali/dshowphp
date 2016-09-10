@@ -24,7 +24,31 @@ class AppController extends Core\Controller
             '/videos',
             $this->request
         );
-        Core\View::render("main.html",array('videos'=>$results));
+        /*
+            $this->show($results);
+        */
+        Core\View::render("main.html",array('videos'=>$results['list']));
+    }
+
+    function show($res){
+        echo "<pre>";
+        print_r($res);
+        echo "</pre>";
+    }
+
+    public function bax(){
+        global $url;
+        unset($this->request['tags']);
+        $ur = explode('/',$url);
+        $id = $ur[1];
+        $this->request['ids']=$id;
+        $results= $this->api->get(
+            '/videos',
+            $this->request
+        );
+        //$this->show($results['list'][0]);
+        Core\View::render('watch.html',array('video'=>$results['list'][0]));
+
     }
     
 
